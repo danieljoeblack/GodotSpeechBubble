@@ -23,12 +23,13 @@ func set_text(text, wait_time=3):
 	
 	#set the size of the bubble
 	var text_size = text_node.get_font("normal_font").get_string_size(text_node.text)
-	#text_node.margin_right = text_size.x + margin_offset	
 	
+	#width of label, cannot exceed max_margin 
 	var target_box_size = clamp(text_size.x + margin_offset,text_size.x + margin_offset,max_margin)
 	
+	#number of wrapped lines for height calculation
 	var lineCount = text_size.x/max_margin
-	print(lineCount)
+	
 	#animation
 	$Tween.remove_all()
 	$Tween.interpolate_property(text_node,"margin_right",0,target_box_size, duration)
